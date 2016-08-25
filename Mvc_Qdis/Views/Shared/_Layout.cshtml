@@ -117,7 +117,7 @@
                         <img src="../../content/dist/img/kefu.jpg" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
-                        <asp:Label runat="server" ID="Nlab" />
+                      <label>@System.Web.HttpContext.Current.Request.Cookies["login"].Values["uid"]</label>
                         <p> </p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -268,8 +268,17 @@
             return value;
         };
         function exit() {
-            SetCookie('login', '', 0);
-            window.location.replace("http://10.233.15.36/");
+            $.ajax({
+                type: "Post",
+                url: "/Account/SignOut",
+                data: {},
+                success: function (data) {
+                    window.location = "/account/login";
+                },
+                error: function (msg) {
+                    alert(msg);
+                }
+            });
         };
         window.onload = function () {
             var id = getCookie("active");

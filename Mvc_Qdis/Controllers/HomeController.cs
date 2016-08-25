@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Mvc_Qdis.Controllers
 {
@@ -10,11 +11,12 @@ namespace Mvc_Qdis.Controllers
     {
         //
         // GET: /Home/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
+
 
     }
 }
