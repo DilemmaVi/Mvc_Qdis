@@ -10,7 +10,7 @@ namespace Mvc_Qdis.Controllers
     {
         //
         // GET: /Structure/
-         [Authorize(Roles = "admin")]
+         [Authorize(Roles = "渠道客服主管")]
         public ActionResult organization()
         {
             return View();

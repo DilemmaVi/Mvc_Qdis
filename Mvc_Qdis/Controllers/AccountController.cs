@@ -6,6 +6,7 @@ using System.Data;
 using System.Web.Mvc;
 using System.Web.Security;
 using Mvc_Qdis.Models;
+using System.Data.SqlClient;
 
 namespace Mvc_Qdis.Controllers
 {
@@ -28,10 +29,12 @@ namespace Mvc_Qdis.Controllers
         [HttpPost]
         public string Login(string username, string password, bool cbox)
         {
-            object obj = BookDAL.SqlHelper.ExecuteScalar(BookDAL.SqlHelper.GetConnSting(), CommandType.Text, "select * from ISRegister where UserName=" + username.Trim() + " and PassWord = " + password.Trim() + "");
+            SqlDataReader obj = BookDAL.SqlHelper.ExecuteReader(BookDAL.SqlHelper.GetConnSting(), CommandType.Text, "select * from ISRegister where UserName=@UserName and PassWord =@PassWord", new SqlParameter("UserName", username.Trim()), new SqlParameter("PassWord", password.Trim()));
             string data;
-            if (obj!=null)
+            if (obj.Read())
             {
+                string role = obj["职位"].ToString();
+               
                 FormsAuthenticationTicket authTicket;
                 if (cbox)
                 {
@@ -41,7 +44,7 @@ namespace Mvc_Qdis.Controllers
                                       DateTime.Now,
                                       DateTime.Now.AddDays(14),
                                       false,
-                                      "admin"
+                                      role
                                       );
                      HttpCookie cookie = new HttpCookie("login");
                      cookie.Values.Add("uid", username.Trim());
@@ -57,7 +60,7 @@ namespace Mvc_Qdis.Controllers
                                           DateTime.Now,
                                           DateTime.Now.AddMinutes(30),
                                           false,
-                                          "admin"
+                                          role
                       );
                     }
                     HttpCookie cookie = new HttpCookie("login");
@@ -77,7 +80,7 @@ namespace Mvc_Qdis.Controllers
                 data = "0";
                 return data;
             }
-
+            obj.Close();
         }
 
         [HttpPost]
