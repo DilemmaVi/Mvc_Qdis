@@ -3,71 +3,73 @@ var script = document.createElement("script");
 script.type = "text/javascript";
 document.getElementsByTagName('head')[0].appendChild(script);
 
-
 setTimeout(function () {
-
-    var i = document.getElementById("Mychart").offsetWidth;
-    document.getElementById("Mychart").style.width = i + "px";
-    document.getElementById("Mychart1").style.width = i + "px";
-    document.getElementById("Mychart2").style.width = i + "px";
-    document.getElementById("Mychart3").style.width = i + "px";
-    document.getElementById("Mychart4").style.width = i + "px";
-    document.getElementById("Mychart5").style.width = i + "px";
-});//个人图标固定
-setTimeout(function () {
-       var x = document.getElementById("TDMychart").offsetWidth;
-        document.getElementById("TDMychart").style.width = x + "px";
-        document.getElementById("TDMychart1").style.width = x + "px";
-        document.getElementById("TDMychart2").style.width = x + "px";
-        document.getElementById("TDMychart3").style.width = x + "px";
-        document.getElementById("TDMychart4").style.width = x + "px";
-        document.getElementById("TDMychart5").style.width = x + "px";
+    var x = document.getElementById("TDMychart").offsetWidth;
+    document.getElementById("TDMychart").style.width = x + "px";
+    document.getElementById("TDMychart1").style.width = x + "px";
+    document.getElementById("TDMychart2").style.width = x + "px";
+    document.getElementById("TDMychart3").style.width = x + "px";
+    document.getElementById("TDMychart4").style.width = x + "px";
+    document.getElementById("TDMychart5").style.width = x + "px";
 });//团队图表固定
+setTimeout(function () {
+    var x = document.getElementById("HMychart").offsetWidth;
+    document.getElementById("HMychart").style.width = x + "px";
+    document.getElementById("HMychart1").style.width = x + "px";
+    document.getElementById("HMychart2").style.width = x + "px";
+    document.getElementById("HMychart3").style.width = x + "px";
+    document.getElementById("HMychart4").style.width = x + "px";
+    document.getElementById("HMychart5").style.width = x + "px";
+});//管理图表固定
+setTimeout(function () {
+    HMchart("HchartJD", "HMychart");
+});
 
 setTimeout(function () {
-    Mchart("chartJD", "Mychart");
+    $("#HchartJD").click(function () {
+        HMchart("HchartJD", "HMychart");
     });
+});//个人接待(GL)
 
 setTimeout(function () {
-    $("#chartJD").click(function () {
-        Mchart("chartJD", "Mychart");
+    $("#DDL_yg").change(function () {
+        HMchart("HchartJD", "HMychart");
     });
-});//个人接待
+});//个人接待(GL)
 
 setTimeout(function () {
-    $("#chartCPH").click(function () {
-        Mchart("chartCPH", "Mychart1");
-       });
-});//个人CPH
-
-setTimeout(function () {
-    $("#chartZHL").click(function () {
-        Mchart("chartZHL", "Mychart2");
+    $("#HchartCPH").click(function () {
+        HMchart("HchartCPH", "HMychart1");
     });
-});//个人转化率
+});//个人CPH(GL)
 
 setTimeout(function () {
-    $("#chartFXY").click(function () {
-        Mchart("chartFXY", "Mychart3");
+    $("#HchartZHL").click(function () {
+        HMchart("HchartZHL", "HMychart2");
     });
-});//个人首次响应
+});//个人转化率(GL)
 
 setTimeout(function () {
-    $("#chartAXY").click(function () {
-        Mchart("chartAXY", "Mychart4");
+    $("#HchartFXY").click(function () {
+        HMchart("HchartFXY", "HMychart3");
     });
-});//个人平均响应
+});//个人首次响应(GL)
 
 setTimeout(function () {
-    $("#chartAJD").click(function () {
-        Mchart("chartAJD", "Mychart5");
+    $("#HchartAXY").click(function () {
+        HMchart("HchartAXY", "HMychart4");
     });
-});//个人平均接待
+});//个人平均响应(GL)
 
 setTimeout(function () {
-
-        TDMchart("TDchartJD", "TDMychart");
+    $("#HchartAJD").click(function () {
+        HMchart("HchartAJD", "HMychart5");
     });
+});//个人平均接待(GL)
+setTimeout(function () {
+
+    TDMchart("TDchartJD", "TDMychart");
+});
 
 setTimeout(function () {
     $("#TDchartJD").click(function () {
@@ -105,10 +107,11 @@ setTimeout(function () {
     });
 });//组平均接待
 
-
-function Mchart(type,chart) {
+function HMchart(type, chart) {
     var myChart = echarts.init(document.getElementById(chart));
-    var label = document.getElementById('Nlab').innerText;
+    var DropDownList1 = document.getElementById("DDL_yg");
+    var DropDownList1_Index = DropDownList1.selectedIndex;
+    var label = DropDownList1.options[DropDownList1_Index].text;
     var tp = document.getElementById(type).innerText;
     // 指定图表的配置项和数据
     var date = [];
@@ -118,23 +121,32 @@ function Mchart(type,chart) {
     var arr1 = new Array();
     var arr2 = new Array();
 
+    mz = $.ajax({
+        type: "GET",
+        data: { "name": label },
+        url: "/Ajax/miliao.ashx",
+        async: false
+    });
+
+    var miliao = mz.responseText;
+
     de = $.ajax({
         type: "GET",
-        data: { "miliao":label,"type": "日期","TD":"0" },
+        data: { "miliao": miliao, "type": "日期", "TD": "0" },
         url: "/Ajax/ajax.ashx",
         async: false
     });
 
     da = $.ajax({
         type: "GET",
-        data: { "miliao":label,"type":tp,"TD":"0" },
+        data: { "miliao": miliao, "type": tp, "TD": "0" },
         url: "/Ajax/ajax.ashx",
         async: false
     });
 
     da1 = $.ajax({
         type: "GET",
-        data: { "miliao":label,"type":tp,"TD":"1"},
+        data: { "miliao": miliao, "type": tp, "TD": "1" },
         url: "/Ajax/ajax.ashx",
         async: false
     });
@@ -172,7 +184,7 @@ function Mchart(type,chart) {
             right: '20'
         },
         legend: {
-            data: [tp + '数据', '团队' +tp+ '均值']
+            data: [tp + '数据', '团队' + tp + '均值']
         },
         xAxis: {
             data: date,
@@ -210,12 +222,15 @@ function Mchart(type,chart) {
             }
         },
         {
-            name: '团队'+tp + '均值',
+            name: '团队' + tp + '均值',
             type: 'line',
             data: data1,
+            animationDelay: function (idx) {
+                return idx * 10 + 100;
+            },
             lineStyle: { normal: { color: 'rgb(0,0,255)' } },
         }
-        ], 
+        ],
         animationEasing: 'elasticOut',
         animationDelayUpdate: function (idx) {
             return idx * 30;
@@ -224,7 +239,6 @@ function Mchart(type,chart) {
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 };
-
 function TDMchart(type, chart) {
     {
         var myChart = echarts.init(document.getElementById(chart));
@@ -253,7 +267,7 @@ function TDMchart(type, chart) {
 
         da1 = $.ajax({
             type: "GET",
-            data: {"type": tp, "TD": "2" },
+            data: { "type": tp, "TD": "2" },
             url: "/Ajax/TDchart.ashx",
             async: false
         });
@@ -317,7 +331,47 @@ function TDMchart(type, chart) {
         myChart.setOption(option);
     }
 }
-
-
-
-
+setTimeout(function () {
+    $("#DDL_zg").change(function () {
+        $("#DDL_zz option").remove();
+        var zuzhang = $('#DDL_zg option:selected').val();
+        var arr = new Array();
+        da = $.ajax({
+            type: "GET",
+            data: { "zuzhang": zuzhang, "tp": "0" },
+            url: "/Ajax/DDlist.ashx",
+            async: false
+        });
+        arr = da.responseText.split(",");
+        var option = $("<option >" + "所有组长" + "</option>");
+        $(option).val("所有组长");
+        $("#DDL_zz").append(option);
+        for (var i = 0; i < arr.length; i++) {
+            var newOption = $("<option >" + arr[i] + "</option>");
+            $(newOption).val(arr[i]);
+            $("#DDL_zz").append(newOption);
+        };
+    });
+});//组长筛选
+setTimeout(function () {
+    $("#DDL_zz").change(function () {
+        $("#DDL_yg option").remove();
+        var zuzhang = $('#DDL_zz option:selected').val();
+        var arr = new Array();
+        da = $.ajax({
+            type: "GET",
+            data: { "zuzhang": zuzhang, "tp": "1" },
+            url: "/Ajax/DDlist.ashx",
+            async: false
+        });
+        arr = da.responseText.split(",");
+        var option = $("<option >" + "所有员工" + "</option>");
+        $(option).val("所有员工");
+        $("#DDL_yg").append(option);
+        for (var i = 0; i < arr.length; i++) {
+            var newOption = $("<option >" + arr[i] + "</option>");
+            $(newOption).val(arr[i]);
+            $("#DDL_yg").append(newOption);
+        };
+    });
+});//员工筛选

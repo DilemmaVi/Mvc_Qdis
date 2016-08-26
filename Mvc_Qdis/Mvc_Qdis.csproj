@@ -972,6 +972,7 @@
     <Content Include="Scripts\plugins\jQuery\jquery-1.11.2.min.js" />
     <Content Include="Scripts\plugins\jQuery\jQuery-2.2.0.min.js" />
     <Content Include="Scripts\plugins\jQuery\TBchartjs.js" />
+    <Content Include="Scripts\plugins\jQuery\TDchart.js" />
     <Content Include="Scripts\plugins\jvectormap\jquery-jvectormap-1.2.2.css" />
     <Content Include="Scripts\plugins\jvectormap\jquery-jvectormap-1.2.2.min.js" />
     <Content Include="Scripts\plugins\jvectormap\jquery-jvectormap-usa-en.js" />

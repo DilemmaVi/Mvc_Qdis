@@ -117,7 +117,7 @@
                         <img src="../../content/dist/img/kefu.jpg" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
-                      <label>@System.Web.HttpContext.Current.Request.Cookies["login"].Values["uid"]</label>
+                      <label id="Nlab">@if (System.Web.HttpContext.Current.Request.Cookies["login"] != null) {@System.Web.HttpContext.Current.Request.Cookies["login"].Values["uid"]}</label>
                         <p> </p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -130,8 +130,8 @@
                             <i class="fa fa-dashboard"></i> <span id="1">我的首页</span> <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li id="a1_1"><a href="/home/index" id="1_1"><i class="fa fa-circle-o"></i> 个人信息</a></li>
-                            <li id="a1_2"><a href="#" id="1_2"><i class="fa fa-circle-o"></i> 我的数据</a></li>
+                            <li id="a1_1"><a href="#" id="1_1"><i class="fa fa-circle-o"></i> 个人信息</a></li>
+                            <li id="a1_2"><a href="/home/index" id="1_2"><i class="fa fa-circle-o"></i> 我的数据</a></li>
                         </ul>
                     </li>
                     <li id="a2">
@@ -211,7 +211,7 @@
             <section class="content-header">
                 <h1>
                     您好！
-                    <small><label>@Server.UrlDecode(System.Web.HttpContext.Current.Request.Cookies["login"].Values["name"])</label></small>
+                    <small><label>@if (System.Web.HttpContext.Current.Request.Cookies["login"] != null){@Server.UrlDecode(System.Web.HttpContext.Current.Request.Cookies["login"].Values["name"])}</label></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
