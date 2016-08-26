@@ -112,6 +112,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajax\ajax.ashx.cs">
+      <DependentUpon>ajax.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\DDlist.ashx.cs">
+      <DependentUpon>DDlist.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\JDYGdata.ashx.cs">
+      <DependentUpon>JDYGdata.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\JDYGdataHZ.ashx.cs">
+      <DependentUpon>JDYGdataHZ.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\miliao.ashx.cs">
+      <DependentUpon>miliao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\PJYGdata.ashx.cs">
+      <DependentUpon>PJYGdata.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\PJYGdataHZ.ashx.cs">
+      <DependentUpon>PJYGdataHZ.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\SHYGdata.ashx.cs">
+      <DependentUpon>SHYGdata.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\SHYGdataHZ.ashx.cs">
+      <DependentUpon>SHYGdataHZ.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\SQYGdata.ashx.cs">
+      <DependentUpon>SQYGdata.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\suggest.ashx.cs">
+      <DependentUpon>suggest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\taobao\tbtd.ashx.cs">
+      <DependentUpon>tbtd.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\taobao\tbyg.ashx.cs">
+      <DependentUpon>tbyg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\TDchart.ashx.cs">
+      <DependentUpon>TDchart.ashx</DependentUpon>
+    </Compile>
     <Compile Include="code\SqlHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -120,6 +162,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\CustomRoleProvider.cs" />
+    <Compile Include="Helper\JavaScriptSerializer.cs" />
+    <Compile Include="Helper\SqlHelper.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1154,6 +1198,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ajax\ajax.ashx" />
+    <Content Include="Ajax\DDlist.ashx" />
+    <Content Include="Ajax\JDYGdata.ashx" />
+    <Content Include="Ajax\JDYGdataHZ.ashx" />
+    <Content Include="Ajax\miliao.ashx" />
+    <Content Include="Ajax\PJYGdata.ashx" />
+    <Content Include="Ajax\PJYGdataHZ.ashx" />
+    <Content Include="Ajax\SHYGdata.ashx" />
+    <Content Include="Ajax\SHYGdataHZ.ashx" />
+    <Content Include="Ajax\SQYGdata.ashx" />
+    <Content Include="Ajax\suggest.ashx" />
+    <Content Include="Ajax\taobao\tbtd.ashx" />
+    <Content Include="Ajax\taobao\tbyg.ashx" />
+    <Content Include="Ajax\TDchart.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IBatis.Model\IBatis.Model.csproj">
+      <Project>{8a030742-9147-47fa-b87f-9fcb500521ff}</Project>
+      <Name>IBatis.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

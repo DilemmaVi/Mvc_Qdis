@@ -181,21 +181,21 @@ function Mchart(type,chart) {
     de = $.ajax({
         type: "GET",
         data: { "miliao":label,"type": "日期","TD":"0" },
-        url: "ajax/ajax.ashx",
+        url: "~/ajax/ajax.ashx",
         async: false
     });
 
     da = $.ajax({
         type: "GET",
         data: { "miliao":label,"type":tp,"TD":"0" },
-        url: "ajax/ajax.ashx",
+        url: "~/ajax/ajax.ashx",
         async: false
     });
 
     da1 = $.ajax({
         type: "GET",
         data: { "miliao":label,"type":tp,"TD":"1"},
-        url: "ajax/ajax.ashx",
+        url: "~/ajax/ajax.ashx",
         async: false
     });
 
@@ -310,21 +310,21 @@ function HMchart(type, chart) {
     de = $.ajax({
         type: "GET",
         data: { "miliao": miliao, "type": "日期", "TD": "0" },
-        url: "ajax/ajax.ashx",
+        url: "~/ajax/ajax.ashx",
         async: false
     });
 
     da = $.ajax({
         type: "GET",
         data: { "miliao": miliao, "type": tp, "TD": "0" },
-        url: "ajax/ajax.ashx",
+        url: "~/ajax/ajax.ashx",
         async: false
     });
 
     da1 = $.ajax({
         type: "GET",
         data: { "miliao": miliao, "type": tp, "TD": "1" },
-        url: "ajax/ajax.ashx",
+        url: "~/ajax/ajax.ashx",
         async: false
     });
 
@@ -432,21 +432,21 @@ function TDMchart(type, chart) {
         de = $.ajax({
             type: "GET",
             data: { "type": tp, "TD": "1" },
-            url: "Ajax/TDchart.ashx",
+            url: "~/Ajax/TDchart.ashx",
             async: false
         });
 
         da = $.ajax({
             type: "GET",
             data: { "type": tp, "TD": "0" },
-            url: "Ajax/TDchart.ashx",
+            url: "~/Ajax/TDchart.ashx",
             async: false
         });
 
         da1 = $.ajax({
             type: "GET",
             data: {"type": tp, "TD": "2" },
-            url: "Ajax/TDchart.ashx",
+            url: "~/Ajax/TDchart.ashx",
             async: false
         });
 
@@ -518,7 +518,7 @@ setTimeout(function () {
         da = $.ajax({
             type: "GET",
             data: { "zuzhang": zuzhang, "tp": "0" },
-            url: "Ajax/DDlist.ashx",
+            url: "~/Ajax/DDlist.ashx",
             async: false
         });
         arr = da.responseText.split(",");
@@ -542,7 +542,7 @@ setTimeout(function () {
         da = $.ajax({
             type: "GET",
             data: { "zuzhang": zuzhang, "tp": "1" },
-            url: "Ajax/DDlist.ashx",
+            url: "~/Ajax/DDlist.ashx",
             async: false
         });
         arr = da.responseText.split(",");

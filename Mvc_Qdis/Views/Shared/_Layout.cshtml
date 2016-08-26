@@ -211,7 +211,7 @@
             <section class="content-header">
                 <h1>
                     您好！
-                    <small><asp:Label runat="server" ID="Nlab2" /></small>
+                    <small><label>@Server.UrlDecode(System.Web.HttpContext.Current.Request.Cookies["login"].Values["name"])</label></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -236,7 +236,6 @@
     <!-- ./wrapper -->
     <!-- 引入 ECharts 文件 -->
     <script type="text/javascript" src="../../Scripts/plugins/chartjs/echarts.js"></script>
-    <!--script type="text/javascript" src="../../Scripts/plugins/jQuery/chartjs.js"></script-->
     <!--jQuery 2.2.0 -->
     <script src="../../Scripts/plugins/jQuery/jQuery-2.2.0.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

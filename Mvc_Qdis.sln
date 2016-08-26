@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc_Qdis", "Mvc_Qdis\Mvc_Qd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc_Qdis.Tests", "Mvc_Qdis.Tests\Mvc_Qdis.Tests.csproj", "{6E91D1AE-E899-405D-9DA3-DF76930A7679}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBatis.Model", "IBatis.Model\IBatis.Model.csproj", "{8A030742-9147-47FA-B87F-9FCB500521FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6E91D1AE-E899-405D-9DA3-DF76930A7679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E91D1AE-E899-405D-9DA3-DF76930A7679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E91D1AE-E899-405D-9DA3-DF76930A7679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A030742-9147-47FA-B87F-9FCB500521FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A030742-9147-47FA-B87F-9FCB500521FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A030742-9147-47FA-B87F-9FCB500521FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A030742-9147-47FA-B87F-9FCB500521FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

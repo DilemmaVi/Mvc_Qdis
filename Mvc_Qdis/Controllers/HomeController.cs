@@ -14,6 +14,7 @@ namespace Mvc_Qdis.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            ViewBag.show = true;
             return View();
         }
 

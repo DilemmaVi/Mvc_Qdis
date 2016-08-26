@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Mvc_Qdis.Models;
 using System.Data.SqlClient;
+using IBatis.Model;
 
 namespace Mvc_Qdis.Controllers
 {
@@ -15,26 +16,53 @@ namespace Mvc_Qdis.Controllers
         //
         // GET: /Login/
 
+        [HttpGet]
         public ActionResult Login(string returnUrl)
         {
+            var msg = new LoginInfo();
+            msg.Errormsg = false;
             ViewBag.returnUrl = returnUrl;
-            return PartialView();
+            return PartialView(msg);
         }
 
-        public string test()
+         [HttpPost]
+        public ActionResult Login(string returnUrl, LoginInfo info)
         {
-            return "1";
+            ViewBag.returnUrl = returnUrl;
+            info.username = Request["username"];
+            info.password = Request["password"];
+            info.cbox =Boolean.Parse(Request["cbox"]);
+            string data = Login(info.username, info.password, info.cbox).ToString();
+            if (data == "1")
+            {
+                try
+                {
+                    return Redirect(returnUrl);
+                }
+                catch
+                {
+                    return Redirect("/home/index");
+                }
+            }
+            else
+            {
+                info.Errormsg = true;
+                return PartialView(info);
+            }
         }
 
-        [HttpPost]
+
+
         public string Login(string username, string password, bool cbox)
         {
             SqlDataReader obj = BookDAL.SqlHelper.ExecuteReader(BookDAL.SqlHelper.GetConnSting(), CommandType.Text, "select * from ISRegister where UserName=@UserName and PassWord =@PassWord", new SqlParameter("UserName", username.Trim()), new SqlParameter("PassWord", password.Trim()));
             string data;
+         
             if (obj.Read())
             {
                 string role = obj["职位"].ToString();
-               
+                string name = obj["姓名"].ToString();
+                obj.Close();
                 FormsAuthenticationTicket authTicket;
                 if (cbox)
                 {
@@ -48,6 +76,7 @@ namespace Mvc_Qdis.Controllers
                                       );
                      HttpCookie cookie = new HttpCookie("login");
                      cookie.Values.Add("uid", username.Trim());
+                     cookie.Values.Add("name",HttpUtility.UrlEncode(name.Trim()));
                      cookie.Expires = DateTime.Now.AddDays(14);
                      Response.Cookies.Add(cookie);
                 }
@@ -65,6 +94,7 @@ namespace Mvc_Qdis.Controllers
                     }
                     HttpCookie cookie = new HttpCookie("login");
                     cookie.Values.Add("uid", username.Trim());
+                    cookie.Values.Add("name", HttpUtility.UrlEncode(name.Trim()));
                     cookie.Expires = DateTime.Now.AddMinutes(30);
                     Response.Cookies.Add(cookie);
 
@@ -77,10 +107,11 @@ namespace Mvc_Qdis.Controllers
             }
             else
             {
+                obj.Close();
                 data = "0";
                 return data;
             }
-            obj.Close();
+           
         }
 
         [HttpPost]

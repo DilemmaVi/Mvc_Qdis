@@ -2,4 +2,218 @@
     ViewBag.Title = "Index";
 }
 
-<h2>我是测试的</h2>
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div>
+        <asp:ScriptManager ID="ScriptManager1" ></asp:ScriptManager>
+    </div>
+
+    <div id="sbox" style="float:left;width:350px" >
+        <a>请选择：</a>
+        <select id="DDL_zg">
+            <option value="所有主管" selected="selected">所有主管</option>
+            <option value="程朕" >程朕</option>
+            <option value="王冉卓">王冉卓</option>
+            <option value="赵康">赵康</option>
+        </select>
+        <select id="DDL_zz">
+            <option value="所有组长">所有组长</option>
+        </select>
+        <select id="DDL_yg">
+            <option value="所有员工">所有员工</option>
+        </select>
+    </div>
+
+    <button style="float:left" id="cxbtn" type="button" class="btn-success">查询</button>
+
+    <div style="float:right"><p id="gxsj" class="text-green">数据更新时间：2016/5/30 12:15:37</p></div>
+
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><asp:Label  ID="Jdl" Text=""></asp:Label></h3>
+                    <p>本绩效月 累计接待人数</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a class="small-box-footer"> <asp:Label ID="Jdljz"  Text="团队均值：500"></asp:Label></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><asp:Label ID="CPH" ></asp:Label></h3>
+
+                    <p>本绩效月 CPH平均值</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a class="small-box-footer">
+                    <asp:Label ID="CPHjz"  Text="团队均值：22"></asp:Label>
+                </a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><asp:Label ID="ZHL" ></asp:Label></h3>
+
+                    <p>本绩效月 转化率平均值</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a class="small-box-footer"><asp:Label ID="Zhljz"  Text="团队均值：22%"></asp:Label> </a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><asp:Label ID="SCXY" ></asp:Label></h3>
+
+                    <p>本绩效月 首次响应时长</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a class="small-box-footer"><asp:Label ID="FirstXY"  Text="团队均值：160s"></asp:Label></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><asp:Label ID="PJXY" ></asp:Label></h3>
+
+                    <p>本绩效月 平均响应时长</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a class="small-box-footer"><asp:Label ID="AVGXY"  Text="团队均值：160s"></asp:Label></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><asp:Label ID="PJJD" ></asp:Label></h3>
+
+                    <p>本绩效月 平均接待时长</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a class="small-box-footer"><asp:Label ID="AVGjd"  Text="团队均值：160s"></asp:Label></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                    <li class="active"><a href="#TDMychart" id="TDchartJD" data-toggle="tab">接待人数</a></li>
+                    <li><a href="#TDMychart1" id="TDchartCPH" data-toggle="tab">CPH</a></li>
+                    <li><a href="#TDMychart2" id="TDchartZHL" data-toggle="tab">转化率</a></li>
+                    <li><a href="#TDMychart3" id="TDchartFXY" data-toggle="tab">首次响应时长</a></li>
+                    <li><a href="#TDMychart4" id="TDchartAXY" data-toggle="tab">平均响应时长</a></li>
+                    <li><a href="#TDMychart5" id="TDchartAJD" data-toggle="tab">平均接待时长</a></li>
+                    <li class="pull-left header"><i class="fa fa-inbox"></i>售前各组数据对比</li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <!-- Morris chart - Sales -->
+                    <div class="tab-pane active" id="TDMychart" style="position: relative; width:100%;height:400px;"></div>
+                    <div id="TDMychart1" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    <div id="TDMychart2" class="tab-pane" style="position: relative;  width:800px;height:400px;"></div>
+                    <div id="TDMychart3" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    <div id="TDMychart4" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    <div id="TDMychart5" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                </div>
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </section>
+        <!-- right col -->
+    </div>
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable ui-sortable"  id="tdyc">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                    <li class="active"><a href="#Mychart" id="chartJD" data-toggle="tab">接待人数</a></li>
+                    <li><a href="#Mychart1" id="chartCPH" data-toggle="tab">CPH</a></li>
+                    <li><a href="#Mychart2" id="chartZHL" data-toggle="tab">转化率</a></li>
+                    <li><a href="#Mychart3" id="chartFXY" data-toggle="tab">首次响应时长</a></li>
+                    <li><a href="#Mychart4" id="chartAXY" data-toggle="tab">平均响应时长</a></li>
+                    <li><a href="#Mychart5" id="chartAJD" data-toggle="tab">平均接待时长</a></li>
+                    <li class="pull-left header"><i class="fa fa-inbox"></i> 近30天数据展示</li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <!-- Morris chart - Sales -->
+                    <div class="tab-pane active" id="Mychart" style="position: relative; width:100%;height:400px;"></div>
+                    <div id="Mychart1" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    <div id="Mychart2" class="tab-pane" style="position: relative;  width:800px;height:400px;"></div>
+                    <div id="Mychart3" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    <div id="Mychart4" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    <div id="Mychart5" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                </div>
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </section>
+        <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+    @if (ViewBag.show)
+    {
+        <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable ui-sortable"  id="GL_sjzs">
+                <!-- Custom tabs (Charts with tabs)-->
+                <div class="nav-tabs-custom">
+                    <!-- Tabs within a box -->
+                    <ul class="nav nav-tabs pull-right">
+                        <li class="active"><a href="#HMychart" id="HchartJD" data-toggle="tab">接待人数</a></li>
+                        <li><a href="#HMychart1" id="HchartCPH" data-toggle="tab">CPH</a></li>
+                        <li><a href="#HMychart2" id="HchartZHL" data-toggle="tab">转化率</a></li>
+                        <li><a href="#HMychart3" id="HchartFXY" data-toggle="tab">首次响应时长</a></li>
+                        <li><a href="#HMychart4" id="HchartAXY" data-toggle="tab">平均响应时长</a></li>
+                        <li><a href="#HMychart5" id="HchartAJD" data-toggle="tab">平均接待时长</a></li>
+                        <li class="pull-left header"><i class="fa fa-inbox"></i> 近30天数据展示</li>
+                    </ul>
+                    <div class="tab-content no-padding">
+                        <!-- Morris chart - Sales -->
+                        <div class="tab-pane active" id="HMychart" style="position: relative; width:100%;height:400px;"></div>
+                        <div id="HMychart1" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                        <div id="HMychart2" class="tab-pane" style="position: relative;  width:800px;height:400px;"></div>
+                        <div id="HMychart3" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                        <div id="HMychart4" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                        <div id="HMychart5" class="tab-pane" style="position: relative; width:800px;height:400px;"></div>
+                    </div>
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </section>
+            <!-- right col -->
+        </div>
+    }
+</section>
+<script type="text/javascript" src="../../Scripts/plugins/jQuery/chartjs.js"></script>
