@@ -41,12 +41,12 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
@@ -240,8 +240,14 @@
     <Content Include="Content\dist\js\demo.js" />
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
+    <Content Include="Content\tip\jquery.poshytip.min.js" />
+    <Content Include="Content\tip\overhang.min.css" />
+    <Content Include="Content\tip\tip-yellow.css" />
+    <Content Include="Content\tip\tip-yellow.png" />
+    <Content Include="Content\tip\tip-yellow_arrows.png" />
     <Content Include="Global.asax" />
     <Content Include="Images\mi_logo.jpg" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="Scripts\plugins\bootstrap-slider\slider.css" />
     <Content Include="Scripts\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
@@ -971,6 +977,7 @@
     <Content Include="Scripts\plugins\jQuery\chartjs.js" />
     <Content Include="Scripts\plugins\jQuery\jquery-1.11.2.min.js" />
     <Content Include="Scripts\plugins\jQuery\jQuery-2.2.0.min.js" />
+    <Content Include="Scripts\plugins\jQuery\overhang.min.js" />
     <Content Include="Scripts\plugins\jQuery\TBchartjs.js" />
     <Content Include="Scripts\plugins\jQuery\TDchart.js" />
     <Content Include="Scripts\plugins\jvectormap\jquery-jvectormap-1.2.2.css" />
@@ -1044,7 +1051,9 @@
     <Content Include="Scripts\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Scripts\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Scripts\plugins\timepicker\bootstrap-timepicker.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

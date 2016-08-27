@@ -55,9 +55,9 @@ namespace Mvc_Qdis.Controllers
 
         public string Login(string username, string password, bool cbox)
         {
+            //身份验证
             SqlDataReader obj = BookDAL.SqlHelper.ExecuteReader(BookDAL.SqlHelper.GetConnSting(), CommandType.Text, "select * from ISRegister where UserName=@UserName and PassWord =@PassWord", new SqlParameter("UserName", username.Trim()), new SqlParameter("PassWord", password.Trim()));
             string data;
-         
             if (obj.Read())
             {
                 string role = obj["职位"].ToString();
@@ -66,6 +66,7 @@ namespace Mvc_Qdis.Controllers
                 FormsAuthenticationTicket authTicket;
                 if (cbox)
                 {
+                    //MVC票据生成
                      authTicket = new FormsAuthenticationTicket(
                                       1,
                                       username,
@@ -115,7 +116,7 @@ namespace Mvc_Qdis.Controllers
         }
 
         [HttpPost]
-        public void SignOut()
+        public void SignOut()//登出系统
         {
             FormsAuthentication.SignOut();
             Response.Redirect("~/account/login");

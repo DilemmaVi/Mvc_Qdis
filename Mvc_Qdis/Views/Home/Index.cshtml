@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-
+@model IBatis.Model.LoginInfo
 <section class="content">
     <!-- Small boxes (Stat box) -->
     @if (ViewBag.show)
@@ -24,7 +24,7 @@
         <button style="float:left" id="cxbtn" type="button" class="btn-success">查询</button>
     }
     
-    <div style="float:right"><p id="gxsj" class="text-green">数据更新时间：2016/5/30 12:15:37</p></div>
+    <div style="float:right"><p id="gxsj" class="text-green">@ViewBag.time</p></div>
 
     <div class="row"></div>
     <div class="row">
