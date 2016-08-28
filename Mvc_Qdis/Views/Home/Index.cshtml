@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-@model IBatis.Model.LoginInfo
+@model IBatis.Model.SQdata
+
 <section class="content">
     <!-- Small boxes (Stat box) -->
     @if (ViewBag.show)
@@ -9,7 +10,7 @@
         <div id="sbox" style="float:left;width:350px">
             <a>请选择：</a>
             <select id="DDL_zg">
-                <option value="所有主管" selected="selected">所有主管</option>
+                <option data-display="Select" value="所有主管" selected="selected">所有主管</option>
                 <option value="程朕">程朕</option>
                 <option value="王冉卓">王冉卓</option>
                 <option value="赵康">赵康</option>
@@ -32,7 +33,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3><label id="Jdl" ></label></h3>
+                    <h3><label id="Jdl" >@Model.Reception</label></h3>
                     <p>本绩效月 累计接待人数</p>
                 </div>
                 <div class="icon">
@@ -46,7 +47,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3><label id="CPH"></label></h3>
+                    <h3><label id="CPH">@Model.CPH</label></h3>
 
                     <p>本绩效月 CPH平均值</p>
                 </div>
@@ -63,7 +64,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3><label id="ZHL"></label></h3>
+                    <h3><label id="ZHL">@Model.Conversion</label></h3>
 
                     <p>本绩效月 转化率平均值</p>
                 </div>
@@ -78,7 +79,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3><label id="SCXY"></label></h3>
+                    <h3><label id="SCXY">@Model.FrTime</label></h3>
 
                     <p>本绩效月 首次响应时长</p>
                 </div>
@@ -93,7 +94,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3><label id="PJXY"></label></h3>
+                    <h3><label id="PJXY">@Model.AvgTime</label></h3>
 
                     <p>本绩效月 平均响应时长</p>
                 </div>
@@ -108,7 +109,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3><label id="PJJD"></label></h3>
+                    <h3><label id="PJJD">@Model.ARTime</label></h3>
 
                     <p>本绩效月 平均接待时长</p>
                 </div>
@@ -217,6 +218,7 @@
         </div>
     }
 </section>
+
 @if (ViewBag.show)
 {
     <script type="text/javascript" src="../../Scripts/plugins/jQuery/TDchart.js"></script>
