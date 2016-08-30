@@ -1,0 +1,321 @@
+﻿
+<div class="row">
+    <!-- Left col -->
+    <section class="col-lg-12 connectedSortable ui-sortable"  id="GL_sjzs">
+        <!-- Custom tabs (Charts with tabs)-->
+        <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+                <li><a href="#SHSJHZ" id="HSHSJHZ" data-toggle="tab">数据汇总查询</a></li>
+                <li class="active"><a href="#SHSJZS" id="#SHSJZS" data-toggle="tab">渠道员工数据展示</a></li>
+                <li class="pull-left header"><i class="fa fa-inbox"></i> 渠道售后员工数据展示</li>
+            </ul>
+            <div class="tab-content no-padding">
+                <!-- Morris chart - Sales -->
+                <div class="tab-pane active" id="SHSJZS" style="position: relative;width:100%;height:auto">
+                    <div class="box">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="datepicker1" />
+                                    </div>
+                                </div>
+                            </div>
+                            <label><br /></label>
+                            <table id="example3" class="table table-bordered table-hover" style="position: relative;width:100%;height:auto;white-space: nowrap; text-overflow: ellipsis;">
+                                <thead>
+                                    <tr>
+                                        <th>日期</th>
+                                        <th>员工姓名</th>
+                                        <th>组别</th>
+                                        <th>售前审单</th>
+                                        <th>退款管理</th>
+                                        <th>法政先锋</th>
+                                        <th>AACC工单</th>
+                                        <th>物流（事务/客建）</th>
+                                        <th>物流（承运商）</th>
+                                        <th>大家电事务</th>
+                                        <th>大家电异常</th>
+                                        <th>大家电退款</th>
+                                        <th>外呼确认</th>
+                                        <th>收货交接</th>
+                                        <th>特例</th>
+                                        <th>汇总</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>日期</th>
+                                        <th>员工姓名</th>
+                                        <th>组别</th>
+                                        <th>售前审单</th>
+                                        <th>退款管理</th>
+                                        <th>法政先锋</th>
+                                        <th>AACC工单</th>
+                                        <th>物流（事务/客建）</th>
+                                        <th>物流（承运商）</th>
+                                        <th>大家电事务</th>
+                                        <th>大家电异常</th>
+                                        <th>大家电退款</th>
+                                        <th>外呼确认</th>
+                                        <th>收货交接</th>
+                                        <th>特例</th>
+                                        <th>汇总</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <div class="tab-pane" id="SHSJHZ" style="position: relative;width:100%;height:auto">
+                    <div class="box">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" placeholder="开始时间" id="datepicker_start" />
+                                        <input type="text" class="form-control pull-right" placeholder="结束时间" id="datepicker_end" />
+                                    </div>
+                                </div>
+                            </div>
+                            <label><br /></label>
+                            <table id="example" class="table table-bordered table-hover" style="position: relative;width:100%;height:auto;white-space: nowrap; text-overflow: ellipsis;">
+                                <thead>
+                                    <tr>
+                                        <th>员工姓名</th>
+                                        <th>组别</th>
+                                        <th>售前审单</th>
+                                        <th>退款管理</th>
+                                        <th>法政先锋</th>
+                                        <th>AACC工单</th>
+                                        <th>物流（事务/客建）</th>
+                                        <th>物流（承运商）</th>
+                                        <th>大家电事务</th>
+                                        <th>大家电异常</th>
+                                        <th>大家电退款</th>
+                                        <th>外呼确认</th>
+                                        <th>收货交接</th>
+                                        <th>特例</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>员工姓名</th>
+                                        <th>组别</th>
+                                        <th>售前审单</th>
+                                        <th>退款管理</th>
+                                        <th>法政先锋</th>
+                                        <th>AACC工单</th>
+                                        <th>物流（事务/客建）</th>
+                                        <th>物流（承运商）</th>
+                                        <th>大家电事务</th>
+                                        <th>大家电异常</th>
+                                        <th>大家电退款</th>
+                                        <th>外呼确认</th>
+                                        <th>收货交接</th>
+                                        <th>特例</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.nav-tabs-custom -->
+    </section>
+    <!-- right col -->
+</div>
+
+<script src="../../Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+<script src="../../Scripts/plugins/datatables/dathh.js"></script>
+<script src="../../Scripts/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="../../Scripts/plugins/datatables/buttons.html5.min.js"></script>
+
+
+<!-- page script -->
+<script>
+    $(function () {
+
+        //Date picker
+        $('#datepicker1').datepicker({
+            format: 'yyyy/m/d',
+            autoclose: true
+        });
+    });
+
+    $(function () {
+
+        //Date picker
+        $('#datepicker_start').datepicker({
+            format: 'yyyy/m/d',
+            autoclose: true
+        });
+    });
+
+    $(function () {
+
+        //Date picker
+        $('#datepicker_end').datepicker({
+            format: 'yyyy/m/d',
+            autoclose: true
+        });
+    });
+
+
+    $(function () {
+        $("#example3").DataTable({
+            "ajax": {
+                "type": "GET",
+                "data": { "date": "0" },
+                "url": "/Ajax/SHYGdata.ashx",
+                "dataSrc": ""
+            },
+            "aLengthMenu": [[50, 100, -1], [50, 100, "All"]],
+            "scrollX": true,
+            "columns": [
+              { "data": "日期" },
+              { "data": "员工姓名" },
+              { "data": "组别" },
+              { "data": "售前审单" },
+              { "data": "退款管理" },
+              { "data": "法政先锋" },
+              { "data": "AACC工单" },
+              { "data": "物流异常（事务/客建）" },
+              { "data": "物流异常（承运商）" },
+              { "data": "大家电（事务）" },
+              { "data": "大家电（异常）" },
+              { "data": "大家电（退款）" },
+              { "data": "外呼确认" },
+              { "data": "收货交接" },
+              { "data": "特例" },
+              { "data": "汇总" },
+              { "data": "备注" },
+            ],
+        });
+    });//售后员工数据日展示
+    $(function () {
+        $("#datepicker1").change(function () {
+            var date = $('#datepicker1').val();
+            $('#example3').dataTable().fnDestroy();
+
+            $("#example3").DataTable({
+                "ajax": {
+                    "type": "GET",
+                    "data": { "date": date },
+                    "url": "/Ajax/SHYGdata.ashx",
+                    "dataSrc": ""
+                },
+                "aLengthMenu": [[50, 100, -1], [50, 100, "All"]],
+                "scrollX": true,
+                "columns": [
+                  { "data": "日期" },
+                  { "data": "员工姓名" },
+                  { "data": "组别" },
+                  { "data": "售前审单" },
+                  { "data": "退款管理" },
+                  { "data": "法政先锋" },
+                  { "data": "AACC工单" },
+                  { "data": "物流异常（事务/客建）" },
+                  { "data": "物流异常（承运商）" },
+                  { "data": "大家电（事务）" },
+                  { "data": "大家电（异常）" },
+                  { "data": "大家电（退款）" },
+                  { "data": "外呼确认" },
+                  { "data": "收货交接" },
+                  { "data": "特例" },
+                  { "data": "汇总" },
+                  { "data": "备注" },
+                ],
+            });
+        });
+    });//售后员工数据日展示
+    $(function () {
+        $("#HSHSJHZ").click(function () {
+            $('#example').dataTable().fnDestroy();
+            $("#example").DataTable({
+                "ajax": {
+                    "type": "GET",
+                    "data": { "date1": "0", "date2": "0" },
+                    "url": "/Ajax/SHYGdataHZ.ashx",
+                    "dataSrc": ""
+                },
+                "scrollX": true,
+                "aaSorting": [
+                             [2, "asc"]
+                ],
+                "columns": [
+                  { "data": "员工姓名" },
+                  { "data": "组别" },
+                  { "data": "售前审单" },
+                  { "data": "退款管理" },
+                  { "data": "法政先锋" },
+                  { "data": "AACC工单" },
+                  { "data": "物流异常（事务/客建）" },
+                  { "data": "物流异常（承运商）" },
+                  { "data": "大家电（事务）" },
+                  { "data": "大家电（异常）" },
+                  { "data": "大家电（退款）" },
+                  { "data": "外呼确认" },
+                  { "data": "收货交接" },
+                  { "data": "特例" },
+                ],
+            });
+        });
+    });//数据汇总展示
+    $(function () {
+        $("#datepicker_end").change(function () {
+            var date1 = $('#datepicker_start').val();
+            var date2 = $('#datepicker_end').val();
+            $('#example').dataTable().fnDestroy();
+
+            $("#example").DataTable({
+                "ajax": {
+                    "type": "GET",
+                    "data": { "date1": date1, "date2": date2 },
+                    "url": "/Ajax/SHYGdataHZ.ashx",
+                    "dataSrc": ""
+                },
+                "aaSorting": [
+         [2, "asc"]
+                ],
+                "scrollX": true,
+                "columns": [
+                  { "data": "员工姓名" },
+                  { "data": "组别" },
+                  { "data": "售前审单" },
+                  { "data": "退款管理" },
+                  { "data": "法政先锋" },
+                  { "data": "AACC工单" },
+                  { "data": "物流异常（事务/客建）" },
+                  { "data": "物流异常（承运商）" },
+                  { "data": "大家电（事务）" },
+                  { "data": "大家电（异常）" },
+                  { "data": "大家电（退款）" },
+                  { "data": "外呼确认" },
+                  { "data": "收货交接" },
+                  { "data": "特例" },
+                ],
+            });
+        });
+    });//数据汇总展示选取时间段
+   </script>

@@ -81,7 +81,7 @@ namespace Mvc_Qdis.Controllers
         {
                 var PerData = new SQdata();//实例化模型
                 var uid = System.Web.HttpContext.Current.Request.Cookies["login"].Values["uid"];//获取用户id
-                #region 时间区域代码
+                    #region 时间区域代码
                 string year = DateTime.Today.Year.ToString();
                 string month = (Convert.ToInt32(DateTime.Today.Month.ToString()) - 1).ToString();
                 string month1 = DateTime.Today.Month.ToString();

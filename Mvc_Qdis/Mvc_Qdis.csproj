@@ -155,6 +155,8 @@
       <DependentUpon>TDchart.ashx</DependentUpon>
     </Compile>
     <Compile Include="code\SqlHelper.cs" />
+    <Compile Include="Controllers\DataExportController.cs" />
+    <Compile Include="Controllers\DataShowController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\StructureController.cs" />
@@ -247,6 +249,7 @@
     <Content Include="Content\tip\tip-yellow_arrows.png" />
     <Content Include="Global.asax" />
     <Content Include="Images\mi_logo.jpg" />
+    <Content Include="Scripts\plugins\datatables\dathh.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="Scripts\plugins\bootstrap-slider\slider.css" />
@@ -1230,6 +1233,21 @@
       <Project>{8a030742-9147-47fa-b87f-9fcb500521ff}</Project>
       <Name>IBatis.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataShow\SQdata_show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataShow\SHdata_Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataShow\JDdata_Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataShow\PJdata_Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DataExport\SQ_Export.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

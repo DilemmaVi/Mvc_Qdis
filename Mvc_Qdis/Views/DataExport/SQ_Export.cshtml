@@ -1,0 +1,165 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">渠道售前员工数据</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" placeholder="开始时间" id="datepicker" />
+                            <input type="text" class="form-control pull-right" placeholder="结束时间" id="datepicker1" />
+                        </div>
+                    </div>
+                </div>
+                <label><br /></label>
+                <table id="example2" class="table table-bordered table-hover" style="position: relative;width:100%;height:auto;white-space: nowrap; text-overflow: ellipsis;">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>员工姓名</th>
+                            <th>昵称</th>
+                            <th>组别</th>
+                            <th>主管</th>
+                            <th>米聊号</th>
+                            <th>接待人数</th>
+                            <th>转化率</th>
+                            <th>CPH</th>
+                            <th>首次响应时长</th>
+                            <th>平均响应时长</th>
+                            <th>平均接待时长</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>日期</th>
+                            <th>员工姓名</th>
+                            <th>昵称</th>
+                            <th>组别</th>
+                            <th>主管</th>
+                            <th>米聊号</th>
+                            <th>接待人数</th>
+                            <th>转化率</th>
+                            <th>CPH</th>
+                            <th>首次响应时长</th>
+                            <th>平均响应时长</th>
+                            <th>平均接待时长</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<script src="../../Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+<script src="../../Scripts/plugins/datatables/dathh.js"></script>
+<script src="../../Scripts/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="../../Scripts/plugins/datatables/buttons.html5.min.js"></script>
+
+<!-- page script -->
+<script>
+    $(function () {
+        $("#example2").DataTable({
+            "ajax": {
+                "type": "GET",
+                "data": { "date": "0", "date1": "0" },
+                "url": "/Ajax/SQYGdata.ashx",
+                "dataSrc": ""
+            },
+            dom: 'Bfrtip',
+            buttons: [{
+                extend: 'excelHtml5',
+                customize: function (xlsx) {
+                    var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                    $('row c[r*="10"]', sheet).attr('s', '25');
+                }
+            }],
+            "scrollX": true,
+            "columns": [
+              { "data": "日期" },
+              { "data": "员工姓名" },
+              { "data": "昵称" },
+              { "data": "组别" },
+              { "data": "主管" },
+              { "data": "米聊号" },
+              { "data": "接待人数" },
+              { "data": "转化率" },
+              { "data": "CPH" },
+              { "data": "首次响应时长" },
+              { "data": "平均响应时长" },
+              { "data": "平均接待时长" },
+            ],
+        });
+    });
+    $(function () {
+        $("#datepicker1").change(function () {
+            var date = $('#datepicker').val();
+            var date1 = $('#datepicker1').val();
+            $('#example2').dataTable().fnDestroy();
+
+            $("#example2").DataTable({
+                "ajax": {
+                    "type": "GET",
+                    "data": { "date": date, "date1": date1 },
+                    "url": "/Ajax/SQYGdata.ashx",
+                    "dataSrc": ""
+                },
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'excelHtml5',
+                    customize: function (xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                        $('row c[r*="10"]', sheet).attr('s', '25');
+                    }
+                }],
+                "scrollX": true,
+                "columns": [
+              { "data": "日期" },
+              { "data": "员工姓名" },
+              { "data": "昵称" },
+              { "data": "组别" },
+              { "data": "主管" },
+              { "data": "米聊号" },
+              { "data": "接待人数" },
+              { "data": "转化率" },
+              { "data": "CPH" },
+              { "data": "首次响应时长" },
+              { "data": "平均响应时长" },
+              { "data": "平均接待时长" },
+                ],
+            });
+        });
+    });
+    $(function () {
+
+        //Date picker
+        $('#datepicker').datepicker({
+            format: 'yyyy/m/d',
+            autoclose: true
+        });
+    });
+    $(function () {
+
+        //Date picker
+        $('#datepicker1').datepicker({
+            format: 'yyyy/m/d',
+            autoclose: true
+        });
+    });
+</script>
