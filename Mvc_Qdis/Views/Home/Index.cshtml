@@ -39,7 +39,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a class="small-box-footer"> <label id="Jdljz" >团队累计：500</label></a>
+                <a class="small-box-footer"> <label id="Jdljz" >团队累计：@Model.TD_Reception</label></a>
             </div>
         </div>
         <!-- ./col -->
@@ -55,7 +55,7 @@
                     <i class="ion ion-stats-bars"></i>
                 </div>
                 <a class="small-box-footer">
-                    <label id="CPHjz" >团队均值：22</label>
+                    <label id="CPHjz" >团队均值：@Model.TD_CPH</label>
                 </a>
             </div>
         </div>
@@ -71,7 +71,7 @@
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a class="small-box-footer"><label id="Zhljz" >团队均值：22%</label> </a>
+                <a class="small-box-footer"><label id="Zhljz" >团队均值：@Model.TD_Conversion</label> </a>
             </div>
         </div>
         <!-- ./col -->
@@ -79,14 +79,14 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3><label id="SCXY">@Model.FrTime</label></h3>
+                    <h3><label id="SCXY">@Model.FrTime </label></h3>
 
                     <p>本绩效月 首次响应时长</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a class="small-box-footer"><label id="FirstXY" >团队均值：160s</label></a>
+                <a class="small-box-footer"><label id="FirstXY" >团队均值：@Model.TD_FrTime </label></a>
             </div>
         </div>
         <!-- ./col -->
@@ -94,14 +94,14 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3><label id="PJXY">@Model.AvgTime</label></h3>
+                    <h3><label id="PJXY">@Model.AvgTime </label></h3>
 
                     <p>本绩效月 平均响应时长</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a class="small-box-footer"><label id="AVGXY" >团队均值：160s</label></a>
+                <a class="small-box-footer"><label id="AVGXY" >团队均值：@Model.TD_AvgTime </label></a>
             </div>
         </div>
         <!-- ./col -->
@@ -109,14 +109,14 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3><label id="PJJD">@Model.ARTime</label></h3>
+                    <h3><label id="PJJD">@Model.ARTime </label></h3>
 
                     <p>本绩效月 平均接待时长</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a class="small-box-footer"><label id="AVGjd" >团队均值：160s</label></a>
+                <a class="small-box-footer"><label id="AVGjd" >团队均值：@Model.TD_ARTime </label></a>
             </div>
         </div>
         <!-- ./col -->
