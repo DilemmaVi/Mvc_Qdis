@@ -1,0 +1,137 @@
+﻿<div class="row">
+    <!-- left column -->
+    <!--/.col (left) -->
+    <!-- right column -->
+    <div class="col-xs-12">
+        <!-- Horizontal Form -->
+        <!-- /.box -->
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">建议反馈</h3>
+            </div>
+            <!-- /.box-header -->
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="box-body">
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>建议类型选择</label>
+                        <select id="SelectVal" name="SelectVal" class="form-control" data-val="true" data-val-required="请选择建议类型">
+                            <option value="">请选择建议类型</option>
+                            <option>业务相关</option>
+                            <option>排班相关</option>
+                            <option>排餐相关</option>
+                            <option>管理相关</option>
+                            <option>其他</option>
+                        </select>
+                        <span data-valmsg-for="SelectVal" data-valmsg-replace="true"></span>
+                    </div>
+                    <!-- textarea -->
+                    <div class="form-group">
+                        <label>请填写你的建议或者想法</label>
+                        <textarea id="textbox" class="form-control" name="textbox" rows=4 data-val="true" data-val-required="建议信息不能为空！" placeholder="请输入详细的建议或者想法，我们保证所有反馈的建议都是不记名的，你可以大胆放心的反馈，帮助部门提升！" ></textarea>
+                        <span data-valmsg-for="textbox" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                    
+                </div>
+            }
+            <!-- /.box-body -->
+            </div>
+        <!-- /.box -->
+                <div id="suggestbox" class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">建议反馈列表</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="box-body">
+                                <table id="example2" class="table table-bordered table-hover" style="position: relative;width:100%;height:auto;white-space: nowrap; text-overflow: ellipsis;">
+                                    <thead>
+                                        <tr>
+                                            <th>日期</th>
+                                            <th>建议类型</th>
+                                            <th>建议详情</th>
+                                            <th>是否解决</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>日期</th>
+                                            <th>建议类型</th>
+                                            <th>建议详情</th>
+                                            <th>是否解决</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+    <!--/.col (right) -->
+            </div>
+            <link href="@Url.Content("~/Content/tip/overhang.min.css")" rel="stylesheet" type="text/css" />
+            <link href="@Url.Content("~/Content/tip/tip-yellow.css")" rel="stylesheet" type="text/css" />
+            <script src="../../Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+            <script src="../../Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+            <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+            <script src="../../Scripts/plugins/datatables/dathh.js"></script>
+            <script src="../../Scripts/plugins/datepicker/bootstrap-datepicker.js"></script>
+            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+            <script type="text/javascript" src="../../Scripts/plugins/datatables/buttons.html5.min.js"></script>
+            <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+            <script type="text/javascript" src="../../Scripts/jquery.validate.unobtrusive.js"></script>
+            <script src="../../content/tip/jquery.poshytip.min.js"></script>
+            <script type="text/javascript" src="../../Scripts/plugins/jQuery/overhang.min.js"></script>
+            <script type="text/javascript" src="../../Scripts/plugins/jQueryUI/jquery-ui.min.js"></script>
+            <!-- page script -->
+            <script>
+                $(function () {
+                    $("#example2").DataTable({
+                        "ajax": {
+                            "type": "GET",
+                            "url": "/Ajax/suggest.ashx",
+                            "dataSrc": ""
+                        },
+                        "scrollX": true,
+                        "columns": [
+                          { "data": "日期" },
+                          { "data": "建议类型" },
+                          { "data": "建议详情" },
+                          { "data": "是否解决" },
+                        ],
+                    });
+                });
+            </script>
+
+@if (@ViewBag.pd=="true")
+{
+    <script>
+        $(function () {
+            $("body").overhang({
+                type: "success",
+                message: "提交成功，感谢您的宝贵意见！"
+            })
+        });
+    </script>
+}
+else if (@ViewBag.pd == "error")
+{
+        <script>
+        $(function () {
+            $("body").overhang({
+                type: "error",
+                message: "提交失败，请重试！"
+            })
+        });
+    </script>
+}

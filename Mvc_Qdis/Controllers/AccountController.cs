@@ -31,7 +31,7 @@ namespace Mvc_Qdis.Controllers
             ViewBag.returnUrl = returnUrl;
             info.username = Request["username"];
             info.password = Request["password"];
-            info.cbox =Boolean.Parse(Request["cbox"]);
+            info.cbox =Request["cbox"];
             string data = Login(info.username, info.password, info.cbox).ToString();
             if (data == "1")
             {
@@ -53,7 +53,7 @@ namespace Mvc_Qdis.Controllers
 
 
 
-        public string Login(string username, string password, bool cbox)
+        public string Login(string username, string password, string cbox)
         {
             //身份验证
             SqlDataReader obj = BookDAL.SqlHelper.ExecuteReader(BookDAL.SqlHelper.GetConnSting(), CommandType.Text, "select * from ISRegister where UserName=@UserName and PassWord =@PassWord", new SqlParameter("UserName", username.Trim()), new SqlParameter("PassWord", password.Trim()));
@@ -64,7 +64,7 @@ namespace Mvc_Qdis.Controllers
                 string name = obj["姓名"].ToString();
                 obj.Close();
                 FormsAuthenticationTicket authTicket;
-                if (cbox)
+                if (cbox=="true")
                 {
                     //MVC票据生成
                      authTicket = new FormsAuthenticationTicket(

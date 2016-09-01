@@ -111,41 +111,6 @@
                 increaseArea: '20%' // optional
             });
         });
-
-        
-        function login() {
-            var username = $("#username").val();
-            var password = $("#password").val();
-            var returnUrl = $("#returnUrl").val();
-            var cbox = $("input[type='checkbox']").is(':checked');
-            if (username == "" || password == "") {
-                alert("帐号密码不能为空");
-            }
-            else {
-                $.ajax({
-                    type: "Post",
-                    url: "/Account/login",
-                    data: {
-                        "username": username,
-                        "password": password,
-                        "cbox": cbox
-                    },
-                    success: function (data) {
-                        if (data == "1") {
-                            window.location = returnUrl;
-                        }
-                        else {
-                            alert("帐号或密码错误");
-                            $("#password").val("");
-                            $("#password").focus();
-                        }
-                    },
-                    error: function (msg) {
-                        alert(msg);
-                    }
-                });
-            }
-        };
     </script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../../Scripts/jquery.validate.unobtrusive.js"></script>

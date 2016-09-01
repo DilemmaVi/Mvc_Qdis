@@ -10,7 +10,7 @@ namespace IBatis.Model
 
         public string password { get; set; }
 
-        public bool cbox { get; set; }
+        public string cbox { get; set; }
         public bool Errormsg { get; set; }
     }
 }

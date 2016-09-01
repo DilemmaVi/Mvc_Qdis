@@ -1,0 +1,100 @@
+﻿<link href="~/content/bootstrap/css/templatemo-style.css" rel="stylesheet" />
+
+<div class="login-box">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">员工绩效排名占比查询</h3>
+        </div>
+
+        <div class="box-body">
+            <div class="form-group">
+                <label>员工姓名:</label>
+                <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">请搜索员工姓名输入</option>
+                    @foreach (var newInfo in ViewBag.ls)
+                    {
+                        <option>@newInfo</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>员工姓名:</label>
+                <select class="form-control select3" style="width: 100%;">
+                    <option selected="selected">请选择绩效月</option>
+                    <option>2016年1月</option>
+                    <option>2016年2月</option>
+                    <option>2016年3月</option>
+                    <option>2016年4月</option>
+                    <option>2016年5月</option>
+                    <option>2016年6月</option>
+                    <option>2016年7月</option>
+                    <option>2016年8月</option>
+                    <option>全年平均</option>
+                </select>
+            </div>
+            <!-- /.form group -->
+        </div>
+        <button type="button" id="submit" name="submit" class="btn btn-block btn-success btn-lg">查询</button>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../../Scripts/plugins/select2/select2.min.css">
+<script src="../../Scripts/plugins/select2/select2.full.min.js"></script>
+<link rel="stylesheet" href="../../Scripts/plugins/sweetalert2/sweetalert2.min.css">
+<script src="../../Scripts/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+        $(".select3").select2();
+    });
+    $(function () {
+        $("#submit").click(function () {
+            var staff = $(".select2").val();
+            var month = $(".select3").val();
+            if (staff == '请搜索员工姓名输入' || month == '请选择绩效月') {
+
+                swal(
+                    "出错了",
+                    "姓名或者绩效月没有选择，请重试",
+                    'error'
+                    )
+            }
+            else {
+                $.ajax({
+                    type: "POST", //提交数据的类型 分为POST和GET
+                    async: false,
+                    url: "/datashow/rank",  //提交url 注意url必须小写
+                    data: { "staff": staff, "month": month },
+                    success: function (data) {
+                        if (data == "null") {
+                            swal(
+                                staff,
+                                "未查到数据，员工在此时段可能已经离职",
+                                'warning'
+                                )
+                        }
+                        else if (data == "error")
+                        {
+                    swal(
+                            "出错了",
+                            "查询时出现错误！！！",
+                            'error'
+                            )
+                        }
+                        else {
+                            swal(
+                                    staff,
+                                    month + "的绩效排名为：" + data,
+                                    'success'
+                                    )
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+</script>
