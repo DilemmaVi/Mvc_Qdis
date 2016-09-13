@@ -121,9 +121,10 @@
     {
         <script>
             $(function () {
+                var msg=@Model.cbox
                 $("body").overhang({
                     type: "error",
-                    message: "帐号或者密码错误！"
+                    message: msg
 
                 })
             });

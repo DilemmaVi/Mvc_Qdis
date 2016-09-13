@@ -58,6 +58,7 @@ namespace Mvc_Qdis.Controllers
             //身份验证
             SqlDataReader obj = BookDAL.SqlHelper.ExecuteReader(BookDAL.SqlHelper.GetConnSting(), CommandType.Text, "select * from ISRegister where UserName=@UserName and PassWord =@PassWord", new SqlParameter("UserName", username.Trim()), new SqlParameter("PassWord", password.Trim()));
             string data;
+
             if (obj.Read())
             {
                 string role = obj["职位"].ToString();
